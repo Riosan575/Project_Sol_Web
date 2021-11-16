@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+<title>Acceso Denegado</title>
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+		
+		<div>Acceso DENEGADO!!
+			No tienesd acceso para ver esta página o ejecutar esta accion
+			<ul>
+			<li ><a class="nav-link"
+						th:href="@{/home}">Regresar</a></li>
+			</ul>
+			</div>
+	
+
+	<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+</html>

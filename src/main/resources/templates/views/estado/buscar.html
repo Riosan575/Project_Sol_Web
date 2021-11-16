@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head"
+		>
+<meta charset="UTF-8">
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+
+	<div class="container mt-5">
+	
+		<div class="row justify-content-center">
+		
+			<div class="col-md-8">
+			
+				<h4>Consulta el estado de tu motocicleta con tu DNI</h4>
+				
+				
+				<form th:action="/views/estado/buscar" th:object="${estadosmotos}" method="get">
+				
+					<input type="text" th:field="*{dni} " class="from-control col-md-4"/>
+					<button type="submit" class="btn btn-success">Buscar</button>
+				
+				</form>	
+					
+					<table class="table">
+						<thead>
+							<tr>Id</tr>
+							<tr>Dni</tr>
+							<tr>Marca</tr>
+							<tr>Cilindraje</tr>
+							<tr>Estado</tr>
+							
+						</thead>
+						<tbody>
+							<tr th:each="data : ${estadosdni}"></tr>
+							<tr th:text="${data.idEstado}"></tr>
+							<tr th:text="${data.dni}"></tr>
+							<tr th:text="${data.marca}"></tr>
+							<tr th:text="${data.cilindraje}"></tr>
+							<tr th:text="${data.estado}"></tr>
+						
+						</tbody>
+					
+					</table>
+					
+			</div>
+		
+		</div>
+	
+	</div>
+
+
+	<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+</html>

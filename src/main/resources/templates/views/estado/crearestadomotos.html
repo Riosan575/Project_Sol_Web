@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+<meta charset="UTF-8">
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+
+	<div class="container padre"  style="margin:auto; padding:auto">
+		
+		<a class="btn btn-primary btn-sm" th:href="@{/views/estado/}" th:text="'Ver Clientes'" title="Ver Lista Clientes "></a>
+		
+	<div class="card bg-light ">
+		<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+		<div class="card-body">
+		
+		<form th:action="@{/views/estado/saves}" th:object="${estmoto}" method="post">
+			
+			<div>
+				<input type="hidden" th:field="*{idEstado}">
+				<label for="dni">Dni:
+					</label> 
+					<input type="text" th:field="*{dni}" style="width:500px" class="form-control form-control-sm"
+					id="dni" placeholder="Dni del Cliente" required >
+					<small class="form-text text-danger" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></small>
+			</div>
+			<div>
+				
+				<label for="marca">Marca
+					</label>	
+					<select th:field="*{marca}" class="form-control form-control-sm " style="width:500px" required>
+					<option value="">Selecciona una marca</option>
+					<option value="Honda">Honda</option>
+					<option value="KTM">KTM</option>
+					<option value="Kawasaki">Kawasaki</option>
+					<option value="RTM">RTM</option>
+					<option value="Pulsar">Pulsar</option>
+					<option value="Kobayashi">Kobayashi</option>					
+					</select>
+					<small class="form-text text-danger" th:if="${#fields.hasErrors('marca')}" th:errors="*{marca}"></small>
+			</div>
+			<div>
+				<label for="cilindraje">Cilindraje:
+					</label> 
+					<input type="text" th:field="*{cilindraje}" style="width:500px" class="form-control form-control-sm"
+					id="cilindraje" placeholder="Cilindraje" required>
+					<small class="form-text text-danger" th:if="${#fields.hasErrors('cilindraje')}" th:errors="*{cilindraje}"></small>
+			</div>
+			
+			<div>
+				<label for="estado">Estado:
+					</label> 
+				<select th:field="*{estado}" class="form-control form-control-sm " style="width:500px" required>
+					<option value="">Selecciona</option>
+					<option value="En Ingreso">En ingreso</option>
+					<option value="En Reparacion">En reparacion</option>
+					<option value="Lista para Entrega">Lista para entrega</option>
+				</select>
+			
+			</div>
+			
+			
+			<div class="card-footer bg-dark" style="margin-top:10px" >
+				<input type="submit" class="btn btn-primary btn-sm" value="Guardar"/>
+			</div>
+			
+		</form>
+		</div>		
+		<div class="imagenestado">
+			<img id="image" alt="no hay imagen"
+			 src="https://image.shutterstock.com/image-vector/gears-icon-settings-symbol-cog-260nw-777266689.jpg">
+		</div>
+	</div>
+	</div>
+	
+
+	<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+</html>

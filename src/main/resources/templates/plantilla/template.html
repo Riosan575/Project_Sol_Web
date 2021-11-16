@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:fragment="head">
+<meta charset="UTF-8">
+<title>Fran Motors</title>
+<link href="img/icono.jpg" rel="icon">  
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/log.css}">
+<link rel="stylesheet" th:href="@{/css/home.css}">
+<link rel="stylesheet" th:href="@{/css/mostrar.css}">
+<link rel="stylesheet" th:href="@{/css/cliente.css}">
+<link rel="stylesheet" th:href="@{/css/estado.css}">
+ <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+        
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+</head>
+<body>
+	<!-- BARRA DE NAVEGACION -->
+	<header th:fragment="header">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/home">FRAN MOTORS</a>
+				<ul class="navbar-nav me-4 mb-2 mb-lg-0">
+					<li sec:authorize="!isAuthenticated"><a class="nav-link"
+						th:href="@{/login}">Iniciar Sesión</a></li>
+					
+					<li class="dropdown" sec:authorize="isAuthenticated">
+						<a class="btn btn-outline-warning dropdown-toggle" href="#"
+							role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+							aria-expanded="false">
+								<span sec:authentication="name"></span>
+							</a>
+
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<li><a class="dropdown-item" href="/views/cliente/">Ver Clientes</a></li>
+							<li><a class="dropdown-item" href="/views/estado/">Ver Estados</a></li>
+							<li><form th:action="@{/logout}" method="POST">
+								<button  class="dropdown-item" type="submit">Cerrar Sesión</button>
+							</form></li>
+							
+						</ul>
+					</li>
+
+				</ul>	
+			</div>
+		</nav>
+
+		<!-- MENSAJES DE ALERTA -->
+
+		
+	</header>
+	<!-- CONTENIDO -->
+	<div class="container"></div>
+
+
+	<!-- PIE DE PAGINA -->
+	<footer th:fragment="footer"
+		class="bg-dark text-white text-center fixed-bottom">
+		<div class="container">
+			<p>Proyecto Final con Spring - Solweb &copy; 2021</p>
+		</div>
+
+		<script type="text/javascript" th:src="@{/js/jquery-3.3.1-min.js}"></script>
+		<script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
+		<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+	</footer>
+
+</body>
+</html>
